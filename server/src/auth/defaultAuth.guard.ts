@@ -25,6 +25,3 @@ export class DefaultAuthGuard extends JwtAuthGuard {
     return super.canActivate(context);
   }
 }
-;
-  }
-}

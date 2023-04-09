@@ -31,11 +31,14 @@ export class UserServiceBase {
   ): Promise<User[]> {
     return this.prisma.user.findMany(args);
   }
+
   async findOne<T extends Prisma.UserFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserFindUniqueArgs>
   ): Promise<User | null> {
-    return this.prisma.user.findUnique(args);
+    const user = this.prisma.user.findUnique(args);
+    return user;
   }
+
   async create<T extends Prisma.UserCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserCreateArgs>
   ): Promise<User> {
@@ -48,6 +51,7 @@ export class UserServiceBase {
       },
     });
   }
+
   async update<T extends Prisma.UserUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserUpdateArgs>
   ): Promise<User> {
@@ -66,6 +70,7 @@ export class UserServiceBase {
       },
     });
   }
+  
   async delete<T extends Prisma.UserDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<User> {
